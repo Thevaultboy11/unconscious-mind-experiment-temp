@@ -228,6 +228,7 @@
         <button className="danger" onClick=${clearAll} disabled=${!saved.length}>Clear saved results</button>
       </div>
       <p className="muted small">Each participant's file also downloads automatically at the end. This button is the backup.</p>
+      <p><a href="dashboard.html" style=${{ color: "var(--accent)" }}>Open the results dashboard →</a></p>
     </div></div>`;
   }
 
@@ -243,7 +244,7 @@
         <li>It is <b>anonymous</b> — we do not record your name, email or anything that identifies you. Nothing is filmed or audio-recorded.</li>
         <li>You can <b>stop at any time</b> without giving a reason: click <i>Withdraw</i> in the corner or press <b>Esc</b>. Nothing will be saved.</li>
         <li>The data will <b>only be used for the ${C.courseName} class</b> project.</li>
-        <li>It takes about <b>3 minutes</b>.</li>
+        <li>It takes about <b>2 minutes</b>.</li>
         <li>The screen will <b>flicker quickly</b> for short periods. Do not take part if you have photosensitive epilepsy or have ever had a seizure triggered by flashing lights.</li>
       </ul>
       <label className="check"><input type="checkbox" checked=${noEpi} onChange=${(e) => setNoEpi(e.target.checked)} />
@@ -289,9 +290,9 @@
       <h1>What you'll do</h1>
       <ol className="steps">
         <li>A <b>+</b> appears in the middle of the screen. <b>Keep your eyes on it.</b></li>
-        <li>The screen will <b>flicker for about 10 seconds</b>. Just keep looking at the centre.</li>
+        <li>The screen will <b>flicker for a few seconds</b>. Just keep looking at the centre.</li>
         <li>Then you'll see <b>two pictures</b>. <b>Click the one you like more.</b> Go with your first feeling — there are no right or wrong answers.</li>
-        <li>There is a short flicker before each pair. There are 10 pairs.</li>
+        <li>There is a short flicker before each pair. There are ${C.pairs.length} pairs.</li>
       </ol>
       <p className="muted">Sit comfortably, at a normal distance from the screen.</p>
       <button className="primary big" onClick=${onGo}>I'm ready</button>
@@ -406,7 +407,7 @@
   function Done({ demo, pid, onNext }) {
     return html`<${Page}>
       <h1>Thank you!</h1>
-      <p><b>What this study was about:</b> the flicker contained pictures shown for about 1/30 of a second —
+      <p><b>What this study was about:</b> the flicker contained pictures shown for about ${C.timing.primeMs} milliseconds (1/60 of a second) —
       too fast to notice. Depending on the group, they were linked to <i>the beach</i>, to <i>football</i>, or there were no pictures at all.
       We are testing whether pictures you don't consciously see can still nudge which options you prefer.</p>
       <p><b>Please don't tell other students about this</b> until the study is finished — it would affect their results.</p>
@@ -575,6 +576,7 @@
       row[`pair${p.id}_order`] = t.index + 1;
       row[`pair${p.id}_beach_side`] = t.leftIsBeach ? "left" : "right";
     });
+    row.n_pairs = C.pairs.length;
     row.beach_choices = beach;
     row.football_choices = football;
     row.primed_choices = s.condition === "beach" ? beach : s.condition === "football" ? football : "NA";

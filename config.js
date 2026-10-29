@@ -6,12 +6,12 @@ window.EXPERIMENT_CONFIG = {
   courseName: "Unconscious Mind",
 
   timing: {
-    primeMs: 33,          // how long each hidden picture is on screen (rounded to whole screen refreshes: 60 Hz -> 2 frames = 33.3 ms)
-    maskMs: 100,          // scrambled mosaic shown after every picture (this is what hides it)
+    primeMs: 17,          // how long each hidden picture is on screen (rounded to whole screen refreshes: 60 Hz -> 1 frame = 16.7 ms, 120 Hz -> 2 frames)
+    maskMs: 83,           // scrambled mosaic shown after every picture (this is what hides it). 60 Hz -> 5 frames
     fixationMs: 2000,     // "+" before the main flicker
     reprimeFixationMs: 800,
-    mainRepetitions: 3,   // every prime picture appears this many times in the main flicker (24 x 3 = 72 flashes ~ 10 s)
-    reprimeFlashes: 8,    // short flicker before each choice (~1 s)
+    mainRepetitions: 2,   // every prime picture appears this many times in the main flicker (24 x 2 = 48 flashes ~ 5 s)
+    reprimeFlashes: 6,    // short flicker before each choice (~0.6 s)
     stimulusPx: 480,      // size of the flashed square on screen (CSS pixels)
     demoPrimeMs: 400,     // demo mode: slow enough to SEE the pictures (for checking / screenshots)
     demoMaskMs: 300,
@@ -38,16 +38,20 @@ window.EXPERIMENT_CONFIG = {
   // Choice pairs: beach option vs football option, matched by category.
   // Left/right position and pair order are randomised for every participant.
   pairs: [
-    { id: 1,  category: "Footwear", beach: "5a.jpg",  football: "9b.jpg"  }, // flip-flops vs football boot
-    { id: 2,  category: "Hats",     beach: "4a.jpg",  football: "1b.jpg"  }, // sun hat vs cap
-    { id: 3,  category: "Drinks",   beach: "7a.jpg",  football: "8b.jpg"  }, // coconut vs sports bottle
-    { id: 4,  category: "Food",     beach: "6a.jpg",  football: "4b.jpg"  }, // ice cream vs burger
-    { id: 5,  category: "Bars",     beach: "8a.jpg",  football: "2b.jpg"  }, // beach bar vs sports bar
-    { id: 6,  category: "Relaxing", beach: "9a.jpg",  football: "7b.jpg"  }, // hammock vs park bench
-    { id: 7,  category: "Places",   beach: "1a.jpg",  football: "10b.jpg" }, // tropical beach vs ball on pitch
-    { id: 8,  category: "Activity", beach: "2a.jpg",  football: "5b.jpg"  }, // swimmer vs football game
-    { id: 9,  category: "Venues",   beach: "10a.jpg", football: "3b.jpg"  }, // pool vs running track
-    { id: 10, category: "Misc",     beach: "3a.jpg",  football: "6b.jpg"  }, // watermelon vs jerseys
+    { id: 1, category: "Footwear", beach: "5a.jpg", football: "9b.jpg"  }, // flip-flops vs football boot
+    { id: 2, category: "Hats",     beach: "4a.jpg", football: "1b.jpg"  }, // sun hat vs cap
+    { id: 3, category: "Drinks",   beach: "7a.jpg", football: "8b.jpg"  }, // coconut vs sports bottle
+    { id: 4, category: "Food",     beach: "6a.jpg", football: "4b.jpg"  }, // ice cream vs burger
+    { id: 5, category: "Places",   beach: "1a.jpg", football: "10b.jpg" }, // tropical beach vs ball on pitch
+  ],
+
+  // Not used. Move any of these into "pairs" above to swap a pair (keep ids unique).
+  sparePairs: [
+    { id: 6,  category: "Bars",     beach: "8a.jpg",  football: "2b.jpg" }, // beach bar vs sports bar
+    { id: 7,  category: "Relaxing", beach: "9a.jpg",  football: "7b.jpg" }, // hammock vs park bench
+    { id: 8,  category: "Activity", beach: "2a.jpg",  football: "5b.jpg" }, // swimmer vs football game
+    { id: 9,  category: "Venues",   beach: "10a.jpg", football: "3b.jpg" }, // pool vs running track
+    { id: 10, category: "Misc",     beach: "3a.jpg",  football: "6b.jpg" }, // watermelon vs jerseys
   ],
 
   recognitionTrials: 4, // awareness check: "which of these was hidden in the flicker?"
