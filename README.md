@@ -77,9 +77,9 @@ If you change photos, run `python3 tools/prepare_stimuli.py` (needs `pip install
 
 ## Results dashboard
 
-Double-click **`dashboard.html`** (Chrome), then drag in all the CSV files from every laptop at once
-(individual `result_*.csv` and `all_results_*.csv` together is fine — duplicates are removed).
-Dark theme by default, light theme button top right. Nothing is uploaded anywhere.
+Same page: on the setup screen click the **Results dashboard** tab. It shows every participant saved on this
+laptop straight away. To combine laptops, click **Add CSVs from other laptops** (or drag the files in) —
+`result_*.csv` and `all_results_*.csv` together is fine, duplicates are removed. Nothing leaves the laptop.
 
 It shows:
 * **Hypothesis verdicts** — H1 beach > control, H2 football < control, H3 beach > football, with Welch t-tests,
@@ -95,13 +95,10 @@ It shows:
 * A sortable table of every participant, filters (gender, laptop) and exclusion toggles that update everything.
 * An auto-written **Findings paragraph** for the lab report, and a merged CSV export.
 
-**Load simulated data** shows what it looks like before you have real results (clearly marked — don't report it).
-
 ## Files
 
-* `index.html` — open this to run participants
-* `dashboard.html` + `dashboard.js` — results dashboard
-* `app.js` — the experiment (React via `lib/`, no build step)
+* `index.html` — open this: runs participants and has the results dashboard
+* `app.js` — the experiment and the dashboard (React via `lib/`, no build step)
 * `config.js` — timings, picture lists, pairs: **the only file you should need to edit**
 * `tools/prepare_stimuli.py` — makes `stimuli/` from `images/`
 
